@@ -1,0 +1,100 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+* {
+    box-sizing: border-box;
+    margin: 0px;
+}
+
+body {
+    height: 100vh;
+    font-family: "Poppins", sans-serif;
+}
+
+/* animated gradient */
+.gradient {
+    background-image: linear-gradient(-45deg, #045a0d, #23a6d5);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    height: 100vh;
+    width: 100%;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+
+/* create a flex box */
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 80%;
+
+    /* center screen flexbox */
+    margin: 0 auto;
+    margin-top: 60px;
+
+    /* glassmorphism */
+    padding: 30px;
+    background: rgba(125, 249, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+}
+
+.flex-container input {
+    width: 400px;
+    margin: 8px 8px;
+    padding: 12px;
+    display: inline-block;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+/* input focus border */
+.flex-container input:focus {
+    /* border: 1px solid #555; */
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+/* type submit button */
+.flex-container input[type=submit] {
+    background: #3867d6;
+    color: #fff;
+    padding: 1em 3em;
+    border-radius: 3em;
+    font: 600 1rem/1 "Lato", sans-serif;
+    white-space: nowrap;
+    position: relative;
+    z-index: 1;
+    letter-spacing: 0.075em;
+    border: 3px solid transparent;
+    text-transform: uppercase;
+    max-width: fit-content;
+}
+
+/* submit button hover hand cursor */
+.flex-container input[type=submit]:hover {
+    cursor: pointer;
+    /* hover color */
+    /* background: #2d5c8a; */
+    /* shadow */
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
