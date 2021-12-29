@@ -20,6 +20,7 @@ file_put_contents($filepath, $fields);
 // check if file saved
 if (file_exists($filepath)) {
     echo 'File saved';
+    header("Location: next.php?uploadsuccess");
 } else {
     echo 'File not saved';
 }
